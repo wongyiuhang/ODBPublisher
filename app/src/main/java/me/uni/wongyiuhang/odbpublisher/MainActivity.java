@@ -131,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
 
                 content = Html.fromHtml(content).toString();
 
+                content += "\n\n";
+                content += "\ud83d\ude46感恩事項：\n\n";
+                content += "\ud83d\ude4f代禱事項：";
+
                 content = content.replace("\u2028", "");
                 content = content.replace("\u2029", "");
 
