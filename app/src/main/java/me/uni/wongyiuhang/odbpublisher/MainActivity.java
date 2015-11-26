@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Integer... params) {
             String path = "";
             try {
-                path = "http://traditional-odb.org/" + params[0] + "/" + (params[1] + 1) + "/" + params[2] + "?calendar-redirect=true";
+                path = "http://traditional-odb.org/" + params[0] + "/" + (params[1] + 1) + "/" + params[2] + "?calendar-redirect=true&post-type=post";
                 Document doc = Jsoup.connect(path).get();
 
                 Element element = doc.select(".calendar-toggle").first();
@@ -125,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
                 element = doc.select(".thought-box").first();
                 content += "<p>" + element.text() + "</p>";
+
+                content = content.replace("<p>&nbsp;</p>", "");
+                content = content.replace("<p></p>", "");
 
                 content = Html.fromHtml(content).toString();
 
